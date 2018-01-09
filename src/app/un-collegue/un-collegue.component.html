@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="text-center">
+    <img class="card-img-top" src="{{collegue.url}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{collegue.nom}}
+      </h5>
+      <h5>{{collegue.score}}</h5>
+    </div>
+    <app-une-opinion (opinion)="setOpinion($event)"></app-une-opinion>
+  </div>
+</div>
