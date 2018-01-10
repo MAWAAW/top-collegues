@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
+import { CollegueService } from '../shared/service/collegue.service';
 
 @Component({
   selector: 'app-une-opinion',
@@ -10,7 +11,7 @@ export class UneOpinionComponent implements OnInit {
 
   @Output() opinion: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
+  constructor(private collegueService: CollegueService) { }
 
   ngOnInit() {
   }

@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UnCollegueComponent } from './un-collegue/un-collegue.component';
 import { UneOpinionComponent } from './une-opinion/une-opinion.component';
-
+import { CollegueService } from './shared/service/collegue.service';
 
 @NgModule({
   declarations: [
@@ -16,9 +16,10 @@ import { UneOpinionComponent } from './une-opinion/une-opinion.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CollegueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
