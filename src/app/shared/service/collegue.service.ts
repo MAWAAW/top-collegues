@@ -1,9 +1,9 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Collegue } from '../domain/collegue';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
-export class CollegueService implements OnInit {
+export class CollegueService {
 
   private results: Promise<Collegue[]>;
 
@@ -11,7 +11,7 @@ export class CollegueService implements OnInit {
 
   listerCollegues(): Promise<Collegue[]> {
     // récupérer la liste des collègues côté serveur
-    return this.http.get<any[]>('http://localhost:8080/collegues').toPromise()
+    return this.http.get<Collegue[]>('http://localhost:8080/collegues').toPromise()
 
   }
   sauvegarder(newCollegue: Collegue): Promise<Collegue[]> {
@@ -32,9 +32,7 @@ export class CollegueService implements OnInit {
       { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
     ).toPromise()
   }
-
-  ngOnInit(): void {
-
+  findCollegueByPseudo(pseudo: string): Promise<Collegue> {
+    return this.http.get<Collegue>('http://localhost:8080/collegues/' + pseudo).toPromise()
   }
-
 }

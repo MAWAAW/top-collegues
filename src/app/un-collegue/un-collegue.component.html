@@ -1,9 +1,13 @@
 <div class="card" class="text-center">
   <div class="text-center">
-    <img class="card-img-top" src="{{collegue.url}}" alt="rr">
+    <div class="img-resize">
+      <a routerLink="/detail/{{collegue.pseudo}}" routerLinkActive="active">
+        <img class="card-img-top" src="{{collegue.url}}" alt="image">
+      </a>
+    </div>
     <div class="card-body">
       <h3 class="card-title">
-        {{collegue.pseudo}}
+        {{collegue.pseudo | uppercase}}
       </h3>
       <h5>{{collegue.score}}</h5>
     </div>

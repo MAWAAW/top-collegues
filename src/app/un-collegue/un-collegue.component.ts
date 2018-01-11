@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../shared/domain/collegue';
 import { CollegueService } from '../shared/service/collegue.service';
-import { collectExternalReferences } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-un-collegue',
@@ -11,20 +11,28 @@ import { collectExternalReferences } from '@angular/compiler/src/output/output_a
 export class UnCollegueComponent implements OnInit {
 
   @Input() collegue: Collegue;
+  param: string;
 
-  ngOnInit() { }
+  constructor(private collegueService: CollegueService, private route: ActivatedRoute) {
+    // recuperation du parametre pseudo
+    route.params.subscribe(params => { this.param = params['pseudo'] })
+  }
 
-  constructor(private collegueService: CollegueService) { }
+  ngOnInit() {
+    if (this.param != undefined) {
+      this.collegueService.findCollegueByPseudo(this.param).then(collegue => {
+        this.collegue = collegue;
+      })
+    }
+  }
 
   setOpinion(opinion) {
     if (opinion) {
-      //this.collegue.score += 10;
       this.collegueService.aimerUnCollegue(this.collegue).then(collegue => {
         this.collegue.score = collegue.score;
       })
     }
     else {
-      //this.collegue.score -= 5;
       this.collegueService.detesterUnCollegue(this.collegue).then(collegue => {
         this.collegue.score = collegue.score;
       })

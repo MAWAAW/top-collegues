@@ -19,26 +19,25 @@ export class AppComponent implements OnInit {
     this.collegueService.listerCollegues().then(collegues => {
       this.collegues = collegues
     })
-
-    /*this.collegues.push(new Collegue("nom1", "https://pluralsight.imgix.net/paths/path-icons/angular-14a0f6532f.png"))
-    this.collegues.push(new Collegue("nom2", "https://pluralsight.imgix.net/paths/path-icons/angular-14a0f6532f.png"))
-    this.collegues.push(new Collegue("nom3", "https://pluralsight.imgix.net/paths/path-icons/angular-14a0f6532f.png"))
-    this.collegues.push(new Collegue("nom4", "https://pluralsight.imgix.net/paths/path-icons/angular-14a0f6532f.png"))
-    this.collegues.push(new Collegue("nom5", "https://pluralsight.imgix.net/paths/path-icons/angular-14a0f6532f.png"))*/
   }
 
   add(pseudo: HTMLInputElement, imageUrl: HTMLInputElement) {
 
-    this.collegueService.sauvegarder(new Collegue(pseudo.value, imageUrl.value)).then(collegues => {
-      this.collegues = collegues
-    });
+    if (imageUrl.value === "") {
+      this.collegueService.sauvegarder(new Collegue(pseudo.value)).then(collegues => {
+        this.collegues = collegues
+      });
+    }
+    else {
+      this.collegueService.sauvegarder(new Collegue(pseudo.value, imageUrl.value)).then(collegues => {
+        this.collegues = collegues
+      });
+    }
 
-    //this.collegues.push(new Collegue(pseudo.value, imageUrl.value))
     this.opened = true;
     this.successMessage = "Le collègue " + pseudo.value + " a été ajouté avec succés";
     pseudo.value = "";
     imageUrl.value = "";
     return false; // pour éviter le rechargement de la page
   }
-
 }

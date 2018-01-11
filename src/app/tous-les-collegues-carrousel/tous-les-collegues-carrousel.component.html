@@ -1,0 +1,12 @@
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let col of collegues">
+    <div class="img-resize">
+      <img src="{{col.url}}" alt="image">
+    </div>
+    <div class="carousel-caption">
+      <h1>{{col.score}}</h1>
+      <app-une-opinion (opinion)="setOpinion($event,col)"></app-une-opinion>
+      <h3>{{col.pseudo}}</h3>
+    </div>
+  </ng-template>
+</ngb-carousel>

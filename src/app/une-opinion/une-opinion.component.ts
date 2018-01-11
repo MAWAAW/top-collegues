@@ -1,20 +1,15 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Collegue } from '../shared/domain/collegue';
-import { CollegueService } from '../shared/service/collegue.service';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-une-opinion',
   templateUrl: './une-opinion.component.html',
   styleUrls: ['./une-opinion.component.css']
 })
-export class UneOpinionComponent implements OnInit {
+export class UneOpinionComponent {
 
   @Output() opinion: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private collegueService: CollegueService) { }
-
-  ngOnInit() {
-  }
+  constructor() { }
 
   jaime() {
     this.opinion.emit(true)

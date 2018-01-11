@@ -3,12 +3,12 @@
     <h1>Top Collègues</h1>
     <p>Les meilleurs collègues du moment</p>
     <div class="form-group">
-      <label for="exampleInputEmail1">Pseudo</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Pseudo" #pseudo>
+      <label for="pseudo">Pseudo</label>
+      <input type="text" class="form-control" placeholder="Pseudo" #pseudo required>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">URL image</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="URL image" #imageUrl>
+      <label for="urlImage">URL image</label>
+      <input type="text" class="form-control" placeholder="URL image" #imageUrl>
     </div>
     <button (click)="add(pseudo, imageUrl)">Ajouter un nouveau collègue</button>
     <p>
@@ -18,9 +18,22 @@
     </p>
   </form>
 
-  <div class="card-deck">
-    <div *ngFor="let col of collegues">
-      <app-un-collegue [collegue]="col"></app-un-collegue>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/classique" routerLinkActive="active-link">Classique</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tableau" routerLinkActive="active-link">Tableau</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/carrousel" routerLinkActive="active-link">Carrousel</a>
+        </li>
+      </ul>
     </div>
-  </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
 </div>
