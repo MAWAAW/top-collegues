@@ -33,11 +33,15 @@ export class AppComponent implements OnInit {
         this.collegues = collegues
       });
     }
-
     this.opened = true;
     this.successMessage = "Le collègue " + pseudo.value + " a été ajouté avec succés";
     pseudo.value = "";
     imageUrl.value = "";
     return false; // pour éviter le rechargement de la page
   }
+
+  onChange(limit: HTMLInputElement) {
+    console.log("limit: " + limit.value)
+  }
+
 }
