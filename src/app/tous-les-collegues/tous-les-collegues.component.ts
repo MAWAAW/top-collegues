@@ -11,11 +11,13 @@ export class TousLesColleguesComponent implements OnInit {
 
   private collegues: Collegue[] = [];
   public test: string = "salut je suis le test";
+  limit: number
 
   constructor(private collegueService: CollegueService) { }
 
   ngOnInit() {
-    this.collegueService.listerCollegues().then(collegues => {
+    this.collegueService.getLimiteObservable().subscribe(limitValue => this.limit = limitValue)
+    this.collegueService.listerCollegues().subscribe(collegues => {
       this.collegues = collegues
     })
   }

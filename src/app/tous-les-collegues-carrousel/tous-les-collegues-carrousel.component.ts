@@ -20,7 +20,7 @@ export class TousLesColleguesCarrouselComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.collegueService.listerCollegues().then(collegues => {
+    this.collegueService.listerCollegues().subscribe(collegues => {
       this.collegues = collegues
     })
   }
@@ -28,11 +28,11 @@ export class TousLesColleguesCarrouselComponent implements OnInit {
   setOpinion(opinion, collegue) {
     if (opinion) {
       this.collegueService.aimerUnCollegue(collegue)
-        .then(collegueQueJaime => this.collegues.filter(c => c.pseudo == collegueQueJaime.pseudo)[0].score = collegueQueJaime.score)
+        .subscribe(collegueQueJaime => this.collegues.filter(c => c.pseudo == collegueQueJaime.pseudo)[0].score = collegueQueJaime.score)
     }
     else {
       this.collegueService.detesterUnCollegue(collegue)
-        .then(collegueQueJaimePas => this.collegues.filter(c => c.pseudo == collegueQueJaimePas.pseudo)[0].score = collegueQueJaimePas.score)
+        .subscribe(collegueQueJaimePas => this.collegues.filter(c => c.pseudo == collegueQueJaimePas.pseudo)[0].score = collegueQueJaimePas.score)
     }
   }
 

@@ -20,7 +20,7 @@ export class UnCollegueComponent implements OnInit {
 
   ngOnInit() {
     if (this.param != undefined) {
-      this.collegueService.findCollegueByPseudo(this.param).then(collegue => {
+      this.collegueService.findCollegueByPseudo(this.param).subscribe(collegue => {
         this.collegue = collegue;
       })
     }
@@ -28,12 +28,12 @@ export class UnCollegueComponent implements OnInit {
 
   setOpinion(opinion) {
     if (opinion) {
-      this.collegueService.aimerUnCollegue(this.collegue).then(collegue => {
+      this.collegueService.aimerUnCollegue(this.collegue).subscribe(collegue => {
         this.collegue.score = collegue.score;
       })
     }
     else {
-      this.collegueService.detesterUnCollegue(this.collegue).then(collegue => {
+      this.collegueService.detesterUnCollegue(this.collegue).subscribe(collegue => {
         this.collegue.score = collegue.score;
       })
     }
