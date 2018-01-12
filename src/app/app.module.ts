@@ -10,6 +10,7 @@ import { CollegueService } from './shared/service/collegue.service';
 import { TousLesColleguesComponent } from './tous-les-collegues/tous-les-collegues.component';
 import { TousLesColleguesTableauComponent } from './tous-les-collegues-tableau/tous-les-collegues-tableau.component';
 import { TousLesColleguesCarrouselComponent } from './tous-les-collegues-carrousel/tous-les-collegues-carrousel.component';
+import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
 
 const appRoutes: Routes = [
   { path: 'classique', component: TousLesColleguesComponent },
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     UneOpinionComponent,
     TousLesColleguesComponent,
     TousLesColleguesTableauComponent,
-    TousLesColleguesCarrouselComponent
+    TousLesColleguesCarrouselComponent,
+    VotreDernierAvisComponent
   ],
   imports: [
     BrowserModule,

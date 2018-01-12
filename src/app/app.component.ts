@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
   opened: boolean;
   successMessage: string;
 
-  constructor(private collegueService: CollegueService) { }
+  constructor(private collegueService: CollegueService) {
+    this.collegueService.updateLimit(100);
+  }
 
   ngOnInit() {
     this.collegueService.listerCollegues().subscribe(collegues => {
@@ -24,14 +26,10 @@ export class AppComponent implements OnInit {
   add(pseudo: HTMLInputElement, imageUrl: HTMLInputElement) {
 
     if (imageUrl.value === "") {
-      this.collegueService.sauvegarder(new Collegue(pseudo.value)).subscribe(collegues => {
-        this.collegues = collegues
-      });
+      this.collegueService.sauvegarder(new Collegue(pseudo.value));
     }
     else {
-      this.collegueService.sauvegarder(new Collegue(pseudo.value, imageUrl.value)).subscribe(collegues => {
-        this.collegues = collegues
-      });
+      this.collegueService.sauvegarder(new Collegue(pseudo.value, imageUrl.value));
     }
     this.opened = true;
     this.successMessage = "Le collègue " + pseudo.value + " a été ajouté avec succés";
@@ -41,7 +39,13 @@ export class AppComponent implements OnInit {
   }
 
   updateLimit(limit: HTMLInputElement) {
-    this.collegueService.updateLimit(Number(limit.value));
+    if (limit.value === "") {
+      this.collegueService.updateLimit(100);
+    }
+    else {
+      this.collegueService.updateLimit(Number(limit.value));
+    }
+
   }
 
 }
