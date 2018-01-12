@@ -1,6 +1,9 @@
 <div class="container">
   <form>
-    <h1>Top Collègues</h1>
+    <div style="display:inline-block">
+      <h1>Top Collègues</h1>
+      <app-detect-online-offline></app-detect-online-offline>
+    </div>
     <p>Les meilleurs collègues du moment</p>
     <div class="form-group">
       <label for="pseudo">Pseudo</label>
@@ -10,7 +13,7 @@
       <label for="urlImage">URL image</label>
       <input type="text" class="form-control" placeholder="URL image" #imageUrl>
     </div>
-    <button (click)="add(pseudo, imageUrl)">Ajouter un nouveau collègue</button>
+    <button [disabled]=etat (click)="add(pseudo, imageUrl)">Ajouter un nouveau collègue</button>
     <p>
       <ngb-alert *ngIf="opened" type="success" [dismissible]="true" (close)="successMessage=null; opened=false;">
         {{ successMessage }}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Collegue } from './shared/domain/collegue';
 import { CollegueService } from './shared/service/collegue.service';
 
@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   collegues: Collegue[] = [];
   opened: boolean;
   successMessage: string;
+  etat: boolean;
 
   constructor(private collegueService: CollegueService) {
     this.collegueService.updateLimit(100);
@@ -21,6 +22,12 @@ export class AppComponent implements OnInit {
     this.collegueService.listerCollegues().subscribe(collegues => {
       this.collegues = collegues
     })
+
+    this.collegueService.getStatut()
+      .subscribe(statut => {
+        this.etat = statut ? false : true
+      })
+
   }
 
   add(pseudo: HTMLInputElement, imageUrl: HTMLInputElement) {

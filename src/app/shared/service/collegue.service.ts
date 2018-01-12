@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/interval';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
@@ -14,9 +15,11 @@ export class CollegueService {
   limitSubject: BehaviorSubject<number> = new BehaviorSubject(null);
   collegues: BehaviorSubject<Collegue[]> = new BehaviorSubject([]);
   votreDernierAvis: Subject<string> = new Subject();
+  statut: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient) {
     this.refreshData();
+    this.checkConnection();
   }
 
   refreshData() {
@@ -36,8 +39,22 @@ export class CollegueService {
     this.limitSubject.next(limitValue)
   }
 
-  getAvis() {
+  getAvis(): Observable<string> {
     return this.votreDernierAvis.asObservable()
+  }
+
+  getStatut(): Observable<boolean> {
+    return this.statut.asObservable()
+  }
+
+  checkConnection() {
+    Observable.interval(5000)
+      .subscribe(() => this.http.get<Collegue[]>('http://localhost:8080/collegues')
+        .subscribe(
+        () => this.statut.next(true),
+        error => this.statut.next(false)
+        )
+      )
   }
 
   sauvegarder(newCollegue: Collegue): void {

@@ -11,6 +11,7 @@ import { TousLesColleguesComponent } from './tous-les-collegues/tous-les-collegu
 import { TousLesColleguesTableauComponent } from './tous-les-collegues-tableau/tous-les-collegues-tableau.component';
 import { TousLesColleguesCarrouselComponent } from './tous-les-collegues-carrousel/tous-les-collegues-carrousel.component';
 import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
+import { DetectOnlineOfflineComponent } from './detect-online-offline/detect-online-offline.component';
 
 const appRoutes: Routes = [
   { path: 'classique', component: TousLesColleguesComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     TousLesColleguesComponent,
     TousLesColleguesTableauComponent,
     TousLesColleguesCarrouselComponent,
-    VotreDernierAvisComponent
+    VotreDernierAvisComponent,
+    DetectOnlineOfflineComponent,
   ],
   imports: [
     BrowserModule,
