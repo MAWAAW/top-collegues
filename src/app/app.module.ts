@@ -12,6 +12,9 @@ import { TousLesColleguesTableauComponent } from './tous-les-collegues-tableau/t
 import { TousLesColleguesCarrouselComponent } from './tous-les-collegues-carrousel/tous-les-collegues-carrousel.component';
 import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
 import { DetectOnlineOfflineComponent } from './detect-online-offline/detect-online-offline.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { VoteService } from './shared/service/vote.service';
+import { VoteComponent } from './vote/vote.component';
 
 const appRoutes: Routes = [
   { path: 'classique', component: TousLesColleguesComponent },
@@ -31,6 +34,8 @@ const appRoutes: Routes = [
     TousLesColleguesCarrouselComponent,
     VotreDernierAvisComponent,
     DetectOnlineOfflineComponent,
+    HistoriqueComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CollegueService],
+  providers: [CollegueService, VoteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

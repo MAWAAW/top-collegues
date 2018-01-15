@@ -1,6 +1,7 @@
 <div class="card-deck">
   <div *ngFor="let col of collegues | slice:0:limit">
-    <app-un-collegue [collegue]="col"></app-un-collegue>
+    <div *ngIf="col.pseudo.toLowerCase().startsWith(filter.toLowerCase())">
+      <app-un-collegue [collegue]="col"></app-un-collegue>
+    </div>
   </div>
 </div>
-{{test}}

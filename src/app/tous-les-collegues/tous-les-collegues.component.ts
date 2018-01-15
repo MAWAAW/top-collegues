@@ -10,9 +10,9 @@ import { CollegueService } from '../shared/service/collegue.service';
 export class TousLesColleguesComponent implements OnInit {
 
   collegues: Collegue[] = [];
-  test: string = "salut je suis le test";
   limit: number;
   collegue: Collegue;
+  filter: string;
 
   constructor(private collegueService: CollegueService) { }
 
@@ -21,6 +21,8 @@ export class TousLesColleguesComponent implements OnInit {
       this.collegues = collegues)
     this.collegueService.getLimiteObservable().subscribe(limitValue =>
       this.limit = limitValue)
+    this.collegueService.filterObservable.subscribe(filterValue =>
+      this.filter = filterValue)
   }
 
 }

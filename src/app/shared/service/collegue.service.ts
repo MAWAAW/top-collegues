@@ -16,6 +16,8 @@ export class CollegueService {
   collegues: BehaviorSubject<Collegue[]> = new BehaviorSubject([]);
   votreDernierAvis: Subject<string> = new Subject();
   statut: Subject<boolean> = new Subject();
+  filterSubject: BehaviorSubject<string> = new BehaviorSubject("");
+  filterObservable = this.filterSubject.asObservable();
 
   constructor(private http: HttpClient) {
     this.refreshData();
@@ -37,6 +39,10 @@ export class CollegueService {
 
   updateLimit(limitValue: number) {
     this.limitSubject.next(limitValue)
+  }
+
+  filterByPseudo(filterValue: string) {
+    this.filterSubject.next(filterValue)
   }
 
   getAvis(): Observable<string> {

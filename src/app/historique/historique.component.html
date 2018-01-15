@@ -1,0 +1,12 @@
+<h3>Historique</h3>
+
+<div *ngFor="let vote of votes | async" class="row">
+
+  <div class="col img-resize">
+    <img class="card-img-top" src="{{vote.collegue.url}}" alt="image">
+  </div>
+  <div class="col">
+    <h5>{{vote.collegue.pseudo}}</h5>
+    {{vote.collegue.pseudo}} est plutôt {{vote.avis}}, son score est désormais de {{vote.collegue.score}}
+  </div>
+</div>

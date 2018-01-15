@@ -50,9 +50,14 @@ export class AppComponent implements OnInit {
       this.collegueService.updateLimit(100);
     }
     else {
+      console.log("this.collegueService.updateLimit(Number(limit.value)):" + limit.value)
       this.collegueService.updateLimit(Number(limit.value));
     }
 
+  }
+
+  filterByPseudo(pseudoFilter: HTMLInputElement) {
+    this.collegueService.filterByPseudo(String(pseudoFilter.value));
   }
 
 }
