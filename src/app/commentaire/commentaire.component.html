@@ -1,0 +1,23 @@
+<ng-template #content let-d="dismiss">
+  <div class="modal-header">
+    <h2 class="modal-title">Avis</h2>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Que pensez-vous de {{collegue.pseudo}} ?</p>
+    <form #f="ngForm" (ngSubmit)="addCommentaire(f.value, f.valid)" novalidate>
+      <textarea type="text" name="commentaire" cols="60" rows="6" [(ngModel)]="commentaire" #com="ngModel" required minlength="10"
+        maxlength="255"></textarea>
+      <small [hidden]="com.valid || (com.pristine && !f.submitted)" class="text-danger">
+        <hr>Le commentaire doit avoir entre 10 et 255 caractères
+      </small>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-success" (click)="open(content)">Rédiger un commentaire</button>
+
+<hr>

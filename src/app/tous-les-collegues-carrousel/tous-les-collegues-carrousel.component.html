@@ -6,6 +6,7 @@
     <div class="carousel-caption">
       <h1>{{col.score}}</h1>
       <app-une-opinion (opinion)="setOpinion($event,col)"></app-une-opinion>
+      <app-commentaire [collegue]="col"></app-commentaire>
       <h3>{{col.pseudo}}</h3>
     </div>
   </ng-template>

@@ -1,0 +1,20 @@
+<div class="card" class="text-center">
+  <div class="text-center">
+    <div class="img-resize">
+      <img class="card-img-top" src="{{collegue.url}}" alt="image">
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">
+        {{collegue.pseudo | uppercase}}
+      </h3>
+      <h5>{{collegue.score}}</h5>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="commentaires?.length == 0">
+  Aucun commentaire pour {{collegue.pseudo}}
+</div>
+<div *ngFor="let coms of commentaires; let i=index">
+  <p>{{i}}: {{coms}}</p>
+</div>

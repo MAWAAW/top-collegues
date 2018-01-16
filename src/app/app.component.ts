@@ -22,16 +22,13 @@ export class AppComponent implements OnInit {
     this.collegueService.listerCollegues().subscribe(collegues => {
       this.collegues = collegues
     })
-
     this.collegueService.getStatut()
       .subscribe(statut => {
         this.etat = statut ? false : true
       })
-
   }
 
   add(pseudo: HTMLInputElement, imageUrl: HTMLInputElement) {
-
     if (imageUrl.value === "") {
       this.collegueService.sauvegarder(new Collegue(pseudo.value));
     }
@@ -53,7 +50,6 @@ export class AppComponent implements OnInit {
       console.log("this.collegueService.updateLimit(Number(limit.value)):" + limit.value)
       this.collegueService.updateLimit(Number(limit.value));
     }
-
   }
 
   filterByPseudo(pseudoFilter: HTMLInputElement) {

@@ -18,6 +18,7 @@
       <td>{{col.score}}</td>
       <td>
         <app-une-opinion (opinion)="setOpinion($event,col)"></app-une-opinion>
+        <app-commentaire [collegue]="col"></app-commentaire>
       </td>
     </tr>
   </tbody>

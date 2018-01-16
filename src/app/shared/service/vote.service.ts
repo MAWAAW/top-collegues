@@ -18,7 +18,7 @@ export class VoteService {
 
   updateHistorique() {
     Observable.interval(5000)
-      .subscribe(() => this.http.get<Vote[]>('http://localhost:8080/votes?since=' + Math.max(...this.votes.getValue().map(v => v.id)))
+      .subscribe(() => this.http.get<Vote[]>('http://localhost:8080/votes?since=' /*+ Math.max(...this.votes.getValue().map(v => v.id))*/)
         .subscribe(votes => { this.votes.next(votes); })
       )
 
