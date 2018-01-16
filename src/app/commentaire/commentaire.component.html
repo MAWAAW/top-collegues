@@ -8,8 +8,8 @@
   <div class="modal-body">
     <p>Que pensez-vous de {{collegue.pseudo}} ?</p>
     <form #f="ngForm" (ngSubmit)="addCommentaire(f.value, f.valid)" novalidate>
-      <textarea type="text" name="commentaire" cols="60" rows="6" [(ngModel)]="commentaire" #com="ngModel" required minlength="10"
-        maxlength="255"></textarea>
+      <textarea type="text" name="commentaire" cols="60" rows="6" [(ngModel)]="commentaire.commentaire" #com="ngModel" required
+        minlength="10" maxlength="255"></textarea>
       <small [hidden]="com.valid || (com.pristine && !f.submitted)" class="text-danger">
         <hr>Le commentaire doit avoir entre 10 et 255 caractères
       </small>
